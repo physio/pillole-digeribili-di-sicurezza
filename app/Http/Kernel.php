@@ -38,6 +38,11 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
+            //
+            \App\Http\Middleware\HttpsProtocolMiddleware::class,
+
+            // tip:
+            // \Illuminate\Support\Facades\URL::forceScheme('https'); Non fa un redirect dell'utente, ma semplicemente genera i collegamenti
         ],
 
         'api' => [
