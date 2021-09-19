@@ -16,6 +16,8 @@ class CreateIdentityCardsTable extends Migration
         Schema::dropIfExists('identity_cards');
         Schema::create('identity_cards', function (Blueprint $table) {
             $table->id();
+            $table->string('documentType', 100);
+            $table->encrypted('documentNumber');
             $table->timestamps();
         });
     }

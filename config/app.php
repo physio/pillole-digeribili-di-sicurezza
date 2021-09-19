@@ -2,6 +2,14 @@
 
 return [
 
+    'debug_hide' => [
+        '_COOKIE' => array_diff(array_keys($_COOKIE), array()),
+        '_SERVER' => array_diff(array_keys($_SERVER), array('APP_URL', 'QUERY_STRING')),
+        '_ENV' => array_diff(array_keys($_ENV), array()),
+    ],
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
