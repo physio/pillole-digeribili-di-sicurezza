@@ -15,6 +15,9 @@ Buone pratiche, package, idee e suggerimenti per mettere in sicurezza il proprio
 
 Simuliamo una pagina web in cui l'utente deve registrare un documento di riconoscimento. Poniamo l'esempio quindi in cui l'utente deve salvare un dato in chiaro (ad esempio il tipo di documento, scusate la poca fantasia) e il numero di documento (questo invece sarà un dato protetto).
 
+Le informazioni riguardanti i modelli e il DB si trovano alla [pagina dedicata](design/database.md).
+
+
 ### Librerie Utilizzate
 
 - [RichardStyles/EloquentEncryption](https://github.com/RichardStyles/EloquentEncryption): utilizzato per consentire un ulteriore livello di sicurezza durante la gestione dei dati sensibili. Consente ai campi chiave dei tuoi modelli di essere crittografati.
