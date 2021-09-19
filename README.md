@@ -1,63 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://2021.laravelday.it/" target="_blank"><img src="./design/laravel-2021.png" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel@127.0.0.1 2021
 
-## About Laravel
+24 settembre 2021 @ localhost
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+laravelday è la conferenza italiana dedicata a uno dei framework più utilizzati per PHP, uno strumento molto potente, che ha portato molta innovazione nell'ambiente.
+Organizzata ogni anno a partire dal 2017, laravelday vuole dare una panoramica su questa tecnologia e su tutto il suo ecosistema, e permettere alla community di developer laravel di incontrarsi e condividere esperienze e buone pratiche.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+L'edizione 2021 di laravelday si svolge il 24 Settembre, online, nel formato '@localhost'.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Pillole digeribili di Sicurezza
 
-## Learning Laravel
+Buone pratiche, package, idee e suggerimenti per mettere in sicurezza il proprio applicativo a livello strutturale e cercare di dormire più tranquilli.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Simuliamo una pagina web in cui l'utente deve registrare un documento di riconoscimento. Poniamo l'esempio quindi in cui l'utente deve salvare un dato in chiaro (ad esempio il tipo di documento, scusate la poca fantasia) e il numero di documento (questo invece sarà un dato protetto).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Librerie Utilizzate
 
-## Laravel Sponsors
+- [RichardStyles/EloquentEncryption](https://github.com/RichardStyles/EloquentEncryption): utilizzato per consentire un ulteriore livello di sicurezza durante la gestione dei dati sensibili. Consente ai campi chiave dei tuoi modelli di essere crittografati.
+- [graham-campbell/throttle](https://github.com/GrahamCampbell/Laravel-Throttle): Utilizzato per evitare di sovraccaricare le richieste. Utilizzato soprattuto nella API.
+- [laravel-surveillance](https://github.com/neelkanthk/laravel-surveillance): Utilizzato per mettere sotto sorveglianza utenti malintenzionati, indirizzi IP e impronte digitali del browser anonime, scrivere registri di sorveglianza e impedire a quelli malintenzionati di accedere all'app.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+### Utilizzo dei comandi da CLI
+Riporto il testo dalla documentazione di Laravel Surveillance.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+#### Enable surveillance for an IP Address
+```bash
+php artisan surveillance:enable ip 192.1.2.4
+```
 
-## Contributing
+#### Disable surveillance for an IP Address
+```bash
+php artisan surveillance:disable ip 192.1.2.4
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Enable surveillance for a User ID
+```bash
+php artisan surveillance:enable userid 1234
+```
 
-## Code of Conduct
+#### Disable surveillance for a User ID
+```bash
+php artisan surveillance:disable userid 1234
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Enable surveillance for Browser Fingerprint
+```bash
+php artisan surveillance:enable fingerprint hjP0tLyIUy7SXaSY6gyb
+```
 
-## Security Vulnerabilities
+#### Disable surveillance for Browser Fingerprint
+```bash
+php artisan surveillance:disable fingerprint hjP0tLyIUy7SXaSY6gyb
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Block an IP Address
+```bash
+php artisan surveillance:block ip 192.1.2.4
+```
+
+#### UnBlock an IP Address
+```bash
+php artisan surveillance:unblock ip 192.1.2.4
+```
+
+#### Block a User ID
+```bash
+php artisan surveillance:block userid 1234
+```
+
+#### UnBlock a User ID
+```bash
+php artisan surveillance:unblock userid 1234
+```
+
+#### Block a Browser Fingerprint
+```bash
+php artisan surveillance:block fingerprint hjP0tLyIUy7SXaSY6gyb
+```
+
+#### UnBlock a Browser Fingerprint
+```bash
+php artisan surveillance:unblock fingerprint hjP0tLyIUy7SXaSY6gyb
+```
+
+#### Remove a Surveillance record from Database
+```bash
+php artisan surveillance:remove ip 192.5.4.3
+```
+
+### Utilizzo di Laravel Sureillance nel Middleware
+
+You can use the 'surveillance' middleware on any route or route group just like any other middleware.
+
+_NOTE: The middleware looks for the browser fingerprint in the header name as set in the `fingerprint-header-key` inside `config/surveillance.php`_
+
+```php
+Route::middleware(["surveillance"])->get('/', function () {
+    
+});
+```
+
 
 ## License
 
