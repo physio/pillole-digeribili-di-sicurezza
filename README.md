@@ -14,7 +14,9 @@ L'edizione 2021 di laravelday si svolge il 24 Settembre, online, nel formato '@l
 Buone pratiche, package, idee e suggerimenti per mettere in sicurezza il proprio applicativo a livello strutturale e cercare di dormire più tranquilli.
 
 Simuliamo una pagina web in cui l'utente deve registrare un documento di riconoscimento. Poniamo l'esempio quindi in cui l'utente deve salvare un dato in chiaro (ad esempio il tipo di documento, scusate la poca fantasia) e il numero di documento (questo invece sarà un dato protetto).
+
 Le informazioni riguardanti i modelli e il DB si trovano alla [pagina dedicata](design/database.md).
+
 
 ### Librerie Utilizzate
 
