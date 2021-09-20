@@ -8,7 +8,7 @@ use App\Guardian\Contracts\Stage;
 use App\Guardian\Data;
 use App\Guardian\ActionsRepository;
 
-class AsnLookup implements Stage {
+class IpTypeLookup implements Stage {
     private $actions;
 
     private $ip;
@@ -27,17 +27,7 @@ class AsnLookup implements Stage {
         }
 
         $payload = (object) $this->ip->lookup($data->ip());
-
-        $this->create(AsnLookup::class, $payload->connection->asn);
-
-        $logins = $this->action(AsnLookup::class)
-            ->orderBy('created_at', 'desc')
-            ->take(2);
-
-        if (count($logins) < 2) {
-            return false;
-        }
-        
-        return $logins[0]->data != $logins[1]->data;
+       
+        return $payload->is_proxy || $payload->is_tor || $payload->threat_level == 'high';
     }
 }
