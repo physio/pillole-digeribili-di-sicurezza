@@ -16,11 +16,18 @@ Saved entities are:
 
 #### IdentityCard Attributes <a id="id"></a>
 
-| Name         | Type   | Notes            | Example             |
-| ------------ | ------ | ---------------- | ------------------- |
-| id           | number | Incremental      | 1234                |
-| name         | string |                  | Dunder Mifflin      |
-| businessName | string | Ragione Soc.     | Dunder Mifflin Inc. |
-| nodeType     | enum   |                  | factory             |
-| note         | string |                  |                     |
-| owner        | nodeId | null if root org | def456              |
+| Name           | Type    | Notes            | Example             |
+| -------------- | ------- | ---------------- | ------------------- |
+| id             | number  | Incremental      | 1234                |
+| documentType   | string  |                  | patente             |
+| documentNumber | encrypt |                  | xxxxxxxxxxxx        |
+
+
+#### UserTrace Attributes <a id="id"></a>
+
+| Name           | Type    | Notes            | Example             |
+| -------------- | ------- | ---------------- | ------------------- |
+| id             | number  | Incremental      | 1234                |
+| user_id        | number  |                  | 1234                |
+| fingerprint    | string  |                  | xxxxxxxxxxxx        |
+| action         | string  |                  |         |

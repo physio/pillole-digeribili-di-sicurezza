@@ -20,90 +20,13 @@ Le informazioni riguardanti i modelli e il DB si trovano alla [pagina dedicata](
 
 ### Librerie Utilizzate
 
-- [RichardStyles/EloquentEncryption](https://github.com/RichardStyles/EloquentEncryption): utilizzato per consentire un ulteriore livello di sicurezza durante la gestione dei dati sensibili. Consente ai campi chiave dei tuoi modelli di essere crittografati.
+- [RichardStyles/EloquentEncryption](https://github.com/RichardStyles/EloquentEncryption): utilizzato per consentire un ulteriore livello di sicurezza durante la gestione dei dati sensibili. Consente ai campi chiave dei tuoi modelli di essere crittografati. Questa libreria non utilizza la libreria di [default di laravel](https://laravel.com/docs/8.x/encryption), quindi non utilizza app:key.
 - [graham-campbell/throttle](https://github.com/GrahamCampbell/Laravel-Throttle): Utilizzato per evitare di sovraccaricare le richieste. Utilizzato soprattuto nella API.
 - [laravel-surveillance](https://github.com/neelkanthk/laravel-surveillance): Utilizzato per mettere sotto sorveglianza utenti malintenzionati, indirizzi IP e impronte digitali del browser anonime, scrivere registri di sorveglianza e impedire a quelli malintenzionati di accedere all'app.
 
 
 ### Utilizzo dei comandi da CLI
-Riporto il testo dalla documentazione di Laravel Surveillance.
 
-#### Enable surveillance for an IP Address
-```bash
-php artisan surveillance:enable ip 192.1.2.4
-```
-
-#### Disable surveillance for an IP Address
-```bash
-php artisan surveillance:disable ip 192.1.2.4
-```
-
-#### Enable surveillance for a User ID
-```bash
-php artisan surveillance:enable userid 1234
-```
-
-#### Disable surveillance for a User ID
-```bash
-php artisan surveillance:disable userid 1234
-```
-
-#### Enable surveillance for Browser Fingerprint
-```bash
-php artisan surveillance:enable fingerprint hjP0tLyIUy7SXaSY6gyb
-```
-
-#### Disable surveillance for Browser Fingerprint
-```bash
-php artisan surveillance:disable fingerprint hjP0tLyIUy7SXaSY6gyb
-```
-
-#### Block an IP Address
-```bash
-php artisan surveillance:block ip 192.1.2.4
-```
-
-#### UnBlock an IP Address
-```bash
-php artisan surveillance:unblock ip 192.1.2.4
-```
-
-#### Block a User ID
-```bash
-php artisan surveillance:block userid 1234
-```
-
-#### UnBlock a User ID
-```bash
-php artisan surveillance:unblock userid 1234
-```
-
-#### Block a Browser Fingerprint
-```bash
-php artisan surveillance:block fingerprint hjP0tLyIUy7SXaSY6gyb
-```
-
-#### UnBlock a Browser Fingerprint
-```bash
-php artisan surveillance:unblock fingerprint hjP0tLyIUy7SXaSY6gyb
-```
-
-#### Remove a Surveillance record from Database
-```bash
-php artisan surveillance:remove ip 192.5.4.3
-```
-
-### Utilizzo di Laravel Sureillance nel Middleware
-
-You can use the 'surveillance' middleware on any route or route group just like any other middleware.
-
-_NOTE: The middleware looks for the browser fingerprint in the header name as set in the `fingerprint-header-key` inside `config/surveillance.php`_
-
-```php
-Route::middleware(["surveillance"])->get('/', function () {
-    
-});
-```
 
 
 ## License
