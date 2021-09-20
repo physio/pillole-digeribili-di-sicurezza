@@ -17,12 +17,12 @@ class FailedAttempts implements Stage {
         }
 
         Action::create([
-            'fingerprint' => $data->fingerpint,
+            'fingerprint' => $data->fingerpint(),
             'action' => FailedAttempts::class,
             'data' => $data->ip()
         ]);
         
-        return Action::where('fingerprint', $data->fingerpint)
+        return Action::where('fingerprint', $data->fingerpint())
             ->where('action', FailedAttempts::class)
             ->whereDate('created_at', Carbon::today())            
             ->count() > FailedAttempts::ATTEMPTS;
