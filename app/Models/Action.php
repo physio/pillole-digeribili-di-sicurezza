@@ -9,6 +9,7 @@ class Action extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
         'fingerprint', 'action', 'data'
     ];
