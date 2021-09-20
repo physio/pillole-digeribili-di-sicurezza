@@ -12,4 +12,10 @@ class IdentityCard extends Model
     protected $casts = [
         'documentNumber' => Encrypted::class,
     ];
+
+    protected $fillable = [
+        'user_id', 
+        'documentType',
+        'documentNumber'
+    ];
 }
