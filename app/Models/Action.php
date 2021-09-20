@@ -13,9 +13,6 @@ class Action extends Model
         'fingerprint', 'action', 'data'
     ];
 
-    protected $casts = [
-        'documentNumber' => Encrypted::class,
-    ];
 
     /**
      * Get the user for the action.
