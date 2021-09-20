@@ -8,9 +8,7 @@ use App\Guardian\Contracts\Stage;
 use App\Guardian\Data;
 use App\Guardian\ActionsRepository;
 
-class FailedAttempts implements Stage {
-    public const ATTEMPTS = 5;
-
+class DifferentFingerprint implements Stage {
     private $actions;
 
     function __construct(ActionsRepository $actions)
@@ -20,14 +18,16 @@ class FailedAttempts implements Stage {
 
     public function run(Data $data): bool
     {
-        if ($data->logged()) {
+        if (!$data->logged()) {
             return false;
         }
+        
+        $logins = $this->action('success')->orderBy('created_at', 'desc')->take(2);
 
-        $this->actions(FailedAttempts::class);
-       
-        return $this->action(FailedAttempts::class)
-            ->whereDate('created_at', Carbon::today())            
-            ->count() > FailedAttempts::ATTEMPTS;
+        if (count($logins) < 2) {
+            return false;
+        }        
+        
+        return $logins[0]->fingerptint != $logins[0]->fingerptint;
     }
 }

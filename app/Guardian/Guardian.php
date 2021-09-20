@@ -3,18 +3,27 @@
 namespace App\Guardian;
 
 use App\Guardian\LoginData;
+use App\Guardian\ActionsRepository;
 
 class Guardian {    
     private $data;
 
-    function __construct()
+    private $actions;
+
+    function __construct(LoginData $data, ActionsRepository $actions)
     {
-        $this->data = new LoginData();
+        $this->data = $data;
+
+        $this->actions = $actions;
     }
 
     public function login(): void
     {
         $threshold = 0;
+
+        if ($this->data->logged()) {
+            $this->actions('success');
+        }
 
         foreach(config('pills.stages') as $class => $weight) {
             $stage = resolve($class);
