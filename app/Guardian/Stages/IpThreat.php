@@ -8,7 +8,7 @@ use App\Guardian\Contracts\Stage;
 use App\Guardian\Data;
 use App\Guardian\ActionsRepository;
 
-class IpTypeLookup implements Stage {
+class IpThreat implements Stage {
     private $actions;
 
     private $ip;
