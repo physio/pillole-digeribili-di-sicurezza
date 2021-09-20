@@ -8,7 +8,7 @@ use App\Guardian\Contracts\Stage;
 use App\Guardian\Data;
 
 class FailedAttempts implements Stage {
-    public const ATTEMPTS = 5;
+    public const env('GUARDIAN_LOGIN_ATTEMPT', 5);
 
     public function run(Data $data): bool
     {
