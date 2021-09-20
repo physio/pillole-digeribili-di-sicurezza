@@ -2,14 +2,14 @@
 
 namespace App\Guardian;
 
-use App\Guardian\Data;
+use App\Guardian\LoginData;
 
 class Guardian {    
     private $data;
 
     function __construct()
     {
-        $this->data = new Data();
+        $this->data = new LoginData();
     }
 
     public function login(): void

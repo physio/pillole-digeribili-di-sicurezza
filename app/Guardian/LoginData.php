@@ -5,7 +5,7 @@ namespace App\Guardian;
 use Auth;
 use Illuminate\Http\Request;
 
-class Data {    
+class LoginData {    
     public function ip(): string
     {
         return Request::ip();
