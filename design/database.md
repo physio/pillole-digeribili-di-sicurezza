@@ -28,6 +28,6 @@ Saved entities are:
 | Name           | Type    | Notes            | Example             |
 | -------------- | ------- | ---------------- | ------------------- |
 | id             | number  | Incremental      | 1234                |
-| user_id        | number  |                  | 1234                |
+| user_id        | number  |                  | xxxxxxxxxxxx        |
 | fingerprint    | string  |                  | xxxxxxxxxxxx        |
 | action         | string  |                  |         |
