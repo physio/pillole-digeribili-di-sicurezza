@@ -9,7 +9,7 @@ use App\Guardian\Data;
 use App\Guardian\ActionsRepository;
 
 class FailedAttempts implements Stage {
-    public const ATTEMPTS = 5;
+    public const env('GUARDIAN_LOGIN_ATTEMPT', 5);
 
     private $actions;
 
