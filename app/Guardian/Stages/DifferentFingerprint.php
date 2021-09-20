@@ -30,6 +30,6 @@ class DifferentFingerprint implements Stage {
             return false;
         }        
         
-        return $logins[0]->fingerptint != $logins[0]->fingerptint;
+        return $logins[0]->fingerptint != $logins[1]->fingerptint;
     }
 }
