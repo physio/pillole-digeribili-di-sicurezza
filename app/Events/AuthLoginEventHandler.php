@@ -16,7 +16,7 @@ class AuthLoginEventHandler
 
     public function login()
     {
-        $this->guardian->run('fingerprint', $request->all(), true);
+        $this->guardian->run('fingerprint', $request->all(), Auth::check());
     }
 
     public function attempt($credentials)
