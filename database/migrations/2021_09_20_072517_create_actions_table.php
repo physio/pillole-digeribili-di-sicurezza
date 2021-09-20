@@ -18,9 +18,10 @@ class CreateActionsTable extends Migration
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('fingerprint');
+            $table->string('fingerprint')->index();
             $table->string('action', 100);
-            $table->timestamps();
+            $table->string('data')->nullable();
+            $table->timestamps();            
         });
 
         Schema::table('actions', function (Blueprint $table) {

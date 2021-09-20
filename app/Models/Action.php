@@ -9,6 +9,10 @@ class Action extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'fingerprint', 'action', 'data'
+    ];
+
     protected $casts = [
         'documentNumber' => Encrypted::class,
     ];
