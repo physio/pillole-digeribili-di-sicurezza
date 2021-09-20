@@ -13,12 +13,12 @@ class ActionsRepository {
         $this->data = $data;
     }
 
-    public function create(string $action): Action
+    public function create(string $action, string $data = null): Action
     {
         return Action::create([
             'fingerprint' => $this->data->fingerpint(),
             'action' => 'success',
-            'data' => $this->data->ip()
+            'data' => $data ?? $this->data->ip()
         ]);
     }
 

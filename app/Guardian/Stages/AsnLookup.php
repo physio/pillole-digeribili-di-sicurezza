@@ -3,12 +3,13 @@
 namespace App\Guardian\Stages;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 use App\Models\Action;
 use App\Guardian\Contracts\Stage;
 use App\Guardian\Data;
 use App\Guardian\ActionsRepository;
 
-class DifferentFingerprint implements Stage {
+class AsnLookup implements Stage {
     private $actions;
 
     function __construct(ActionsRepository $actions)
@@ -18,17 +19,23 @@ class DifferentFingerprint implements Stage {
 
     public function run(Data $data): bool
     {
-        if (!$data->logged()) {
+        if ($data->logged()) {
             return false;
         }
-        
-        $logins = $this->action('success')
+
+        $key = env('IPAPI_KEY');
+
+        $payload = Http::get("https://api.ipapi.com/api/{$data->ip()}?access_key={$key}")->json();
+
+        $this->create(AsnLookup::class, $payload->connection->asn);
+
+        $logins = $this->action(AsnLookup::class)
             ->orderBy('created_at', 'desc')
             ->take(2);
 
         if (count($logins) < 2) {
             return false;
-        }        
+        }
         
         return $logins[0]->fingerptint != $logins[0]->fingerptint;
     }
