@@ -17,7 +17,7 @@ class Guardian {
         $this->actions = $actions;
     }
 
-    public function login(): void
+    public function run(): void
     {
         $threshold = 0;
 
