@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IdentityCardController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('profile', [UserController::class, 'show'])->middleware('auth');
-Route::get('identiy-card', [IdentityCardController::class, 'show']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
