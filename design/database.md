@@ -23,7 +23,7 @@ Saved entities are:
 | documentNumber | encrypt |                  | xxxxxxxxxxxx        |
 
 
-#### UserTrace Attributes <a id="id"></a>
+#### Action Attributes <a id="id"></a>
 
 | Name           | Type    | Notes            | Example             |
 | -------------- | ------- | ---------------- | ------------------- |
