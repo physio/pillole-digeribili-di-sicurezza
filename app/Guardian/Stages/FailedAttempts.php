@@ -2,24 +2,29 @@
 
 namespace App\Guardian\Stages;
 
+use Carbon\Carbon;
 use App\Models\Action;
 use App\Guardian\Contracts\Stage;
+use App\Guardian\Data;
 
 class FailedAttempts implements Stage {
-    public function run(string $fingerpint, array $data, bool $failed): bool
+    public const ATTEMPTS = 5;
+
+    public function run(Data $data): bool
     {
-        if (!$failed) {
+        if ($data->logged()) {
             return false;
         }
 
         Action::create([
-            'fingerprint' => $fingerpint,
+            'fingerprint' => $data->fingerpint,
             'action' => FailedAttempts::class,
-            'data' => data['ip']
+            'data' => $data->ip()
         ]);
         
-        return Action::where('fingerprint', $fingerpint)
+        return Action::where('fingerprint', $data->fingerpint)
             ->where('action', FailedAttempts::class)
-            ->count() > 5;
+            ->whereDate('created_at', Carbon::today())            
+            ->count() > FailedAttempts::ATTEMPTS;
     }
 }

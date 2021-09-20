@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use Illuminate\Support\Facades\Auth;
 use App\Guardian\Guardian;
 
 class AuthLoginEventHandler
@@ -16,7 +15,7 @@ class AuthLoginEventHandler
 
     public function login()
     {
-        $this->guardian->run('fingerprint', $request->all(), Auth::check());
+        $this->guardian->run();
     }
 
     public function attempt($credentials)

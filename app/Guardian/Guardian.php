@@ -2,15 +2,24 @@
 
 namespace App\Guardian;
 
+use App\Guardian\Data;
+
 class Guardian {    
-    public function login(string $fingerpint, array $data, bool $failed): void
+    private $data;
+
+    function __construct()
+    {
+        $this->data = new Data();
+    }
+
+    public function login(): void
     {
         $threshold = 0;
 
         foreach(config('pills.stages') as $class => $weight) {
             $stage = resolve($class);
 
-            if ($stage->run($fingerpint, $data)) {
+            if ($stage->run($thia->data)) {
                 $threshold += $weight;
             }
         }

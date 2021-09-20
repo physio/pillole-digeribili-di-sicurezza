@@ -2,6 +2,8 @@
 
 namespace App\Guardian\Contracts;
 
+use App\Guardian\Data;
+
 interface Stage {
-    public function run(string $fingerpint, array $data, bool $failed): bool;
+    public function run(Data $data): bool;
 }
