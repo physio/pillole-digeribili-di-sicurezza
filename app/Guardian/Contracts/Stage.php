@@ -3,7 +3,8 @@
 namespace App\Guardian\Contracts;
 
 use App\Guardian\Data;
+use App\Guardian\LoginData;
 
 interface Stage {
-    public function run(Data $data): bool;
+    public function run(LoginData $data): bool;
 }

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Plugin;
+use App\Models\Rsa;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       Plugin::encryptUsing(new \RichardStyles\EloquentEncryption\EloquentEncryption);
+       Rsa::encryptUsing(new \RichardStyles\EloquentEncryption\EloquentEncryption);
     }
 
     /**

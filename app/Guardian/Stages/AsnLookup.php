@@ -5,7 +5,7 @@ namespace App\Guardian\Stages;
 use Carbon\Carbon;
 use App\Models\Action;
 use App\Guardian\Contracts\Stage;
-use App\Guardian\Data;
+use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
 
 class AsnLookup implements Stage {
@@ -20,7 +20,7 @@ class AsnLookup implements Stage {
         $this->ip = $ip;
     }
 
-    public function run(Data $data): bool
+    public function run(LoginData $data): bool
     {
         if ($data->logged()) {
             return false;
