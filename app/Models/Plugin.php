@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use RichardStyles\EloquentEncryption\Casts\Encrypted;
 
 class Plugin extends Model
 {
@@ -25,8 +26,8 @@ class Plugin extends Model
      * @param  string  $value
      * @return string
      */
-    public function getNumberRaw()
+    public function getRaw()
     {
-        return $this->documentNumber;
-    }
+        return substr($this->attributes['documentNumber'],0,50);
+    } 
 }

@@ -10,14 +10,10 @@ class Advanced extends Model
 {
     use HasFactory;
 
-    protected $appEncryptionKey = config('app.encryption_key');
-    protected $encrypter = new Encrypter($appEncryptionKey);
-
     protected $fillable = [
         'documentType',
         'documentNumber'
     ];
-
 
     /**
      * Set the documentNumber.
@@ -27,7 +23,9 @@ class Advanced extends Model
      */
     public function setDocumentNumberAttribute($value)
     {
-        $this->attributes['documentNumber'] = Crypt::encryptString($value);
+        $appEncryptionKey = config('app.encryption_key');
+        $encrypter = new Encrypter($appEncryptionKey);
+        $this->attributes['documentNumber'] = Model::encryptUsing($encrypter);
     }
 
 
@@ -48,25 +46,13 @@ class Advanced extends Model
 
 
     /**
-     * Set the user's first name.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setDocumentNumberAttribute($value)
-    {
-        $this->attributes['documentNumber'] = $this->encrypter($encrypter);
-    }
-
-
-    /**
      * Get the documentNumber encrypted.
      *
      * @param  string  $value
      * @return string
      */
-    public function getNumberRaw()
+    public function getRaw()
     {
-        return $this->documentNumber;
-    }    
+        return substr($this->attributes['documentNumber'],0,50);
+    } 
 }

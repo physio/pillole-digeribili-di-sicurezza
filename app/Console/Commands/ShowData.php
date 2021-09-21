@@ -61,7 +61,7 @@ class ShowData extends CommandBase
                 'ID' => $row-> id,
                 'Type' => $row->documentType,
                 'Decrypt' => $row->documentNumber,
-                'Encrypt' => $row->getNumberRaw()
+                'Encrypt' => $row->getRaw()
             ];
         }
         $this->table(["ID", "Type", "Decrypt", "Encrypt"], $c );
