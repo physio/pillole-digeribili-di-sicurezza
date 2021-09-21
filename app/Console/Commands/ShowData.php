@@ -4,8 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Simply;
-use App\Models\Plugin;
-use App\Models\AesPlugin;
+use App\Models\Rsa;
+use App\Models\Aes;
 
 class ShowData extends CommandBase
 {
@@ -46,11 +46,11 @@ class ShowData extends CommandBase
         case 'simply':
             $result = Simply::all();
             break;
-        case 'plugin':
-            $result = Plugin::all();
+        case 'rsa':
+            $result = Rsa::all();
             break;
         case 'aes':
-            $result = AesPlugin::all();
+            $result = Aes::all();
             break;
         default:
             return [];

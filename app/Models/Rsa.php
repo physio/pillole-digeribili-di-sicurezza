@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RichardStyles\EloquentEncryption\Casts\Encrypted;
 
-class Plugin extends Model
+class Rsa extends Model
 {
     use HasFactory;
 

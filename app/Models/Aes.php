@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RichardStyles\EloquentAES\Casts\AESEncrypted;
 
-class AesPlugin extends Model
+class Aes extends Model
 {
     use HasFactory;
 

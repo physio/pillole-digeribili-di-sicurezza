@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Plugin;
+use App\Models\Rsa;
 use App\Models\Simply;
-use App\Models\AesPlugin;
+use App\Models\Aes;
 
 class GenerateDocument extends CommandBase
 {
@@ -14,14 +14,17 @@ class GenerateDocument extends CommandBase
      *
      * @var string
      */
-    protected $signature = 'laravelday:store {method} {type} {number}';
+    protected $signature = 'laravelday:store 
+                        {method : metodo di salvataggio. Le opzioni disponibili sono simply, rsa e aes } 
+                        {type : tipologia di documento da salvare } 
+                        {number : dato sensibile da salvare criptato }';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate a sambple with Laravel Encryption';
+    protected $description = 'Generate a sample with Laravel Encryption';
 
     /**
      * Create a new command instance.
@@ -37,12 +40,12 @@ class GenerateDocument extends CommandBase
         return Simply::create($data);
     }
 
-    protected function storePlugin($data) {
-        return Plugin::create($data);
+    protected function storeRsa($data) {
+        return Rsa::create($data);
     }
 
-    protected function storeAesPlugin($data) {
-        return AesPlugin::create($data);
+    protected function storeAes($data) {
+        return Aes::create($data);
     }
 
     /**
@@ -67,11 +70,11 @@ class GenerateDocument extends CommandBase
             case 'simply':
                 $result = $this->storeSimply($data);
                 break;
-            case 'plugin':
-                $result = $this->storePlugin($data);
+            case 'rsa':
+                $result = $this->storeRsa($data);
                 break;    
             case 'aes':
-                $result = $this->storeAesPlugin($data);
+                $result = $this->storeAes($data);
                 break;                          
             default:
                 $return = false;

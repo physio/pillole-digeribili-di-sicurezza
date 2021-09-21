@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAesPluginsTable extends Migration
+class CreateAesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAesPluginsTable extends Migration
      */
     public function up()
     {
-        Schema::create('aes_plugins', function (Blueprint $table) {
+        Schema::create('aes', function (Blueprint $table) {
             $table->id();
             $table->string('documentType', 100);
-            $table->string('documentNumber', 200);
+            $table->string('documentNumber');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateAesPluginsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aes_plugins');
+        Schema::dropIfExists('aes');
     }
 }
