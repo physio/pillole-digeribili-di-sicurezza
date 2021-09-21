@@ -23,6 +23,7 @@ Le informazioni riguardanti i modelli e il DB si trovano alla [pagina dedicata](
 - [RichardStyles/EloquentEncryption](https://github.com/RichardStyles/EloquentEncryption): utilizzato per consentire un ulteriore livello di sicurezza durante la gestione dei dati sensibili. Consente ai campi chiave dei tuoi modelli di essere crittografati. Questa libreria non utilizza la libreria di [default di laravel](https://laravel.com/docs/8.x/encryption), quindi non utilizza app:key.
 - [graham-campbell/throttle](https://github.com/GrahamCampbell/Laravel-Throttle): Utilizzato per evitare di sovraccaricare le richieste. Utilizzato soprattuto nella API.
 - [laravel-surveillance](https://github.com/neelkanthk/laravel-surveillance): Utilizzato per mettere sotto sorveglianza utenti malintenzionati, indirizzi IP e impronte digitali del browser anonime, scrivere registri di sorveglianza e impedire a quelli malintenzionati di accedere all'app.
+[enlightn/security-checke](https://github.com/enlightn/security-checker): Utilizzato per il controllo di presenza package con falle di sicurezza.
 
 
 ### Utilizzo dei comandi da CLI
