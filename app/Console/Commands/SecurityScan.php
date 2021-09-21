@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Mail;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Enlightn\SecurityChecker\SecurityChecker;
@@ -36,7 +37,7 @@ class SecurityScan extends Command
 
         $this->table(['Package', 'Time', 'Description'], $this->format($result));
 
-        $this->notification();
+        $this->notification($result);
 
         return 0;
     }
