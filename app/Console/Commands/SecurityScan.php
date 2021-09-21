@@ -24,7 +24,7 @@ class SecurityScan extends Command
     protected $description = 'Check composer packages vulnerabilities';
 
 
-    public function handle(Alarms $monitors): int
+    public function handle(): int
     {
         $checker = new SecurityChecker;
 
