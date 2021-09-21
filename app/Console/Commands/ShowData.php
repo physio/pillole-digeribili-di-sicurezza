@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Advanced;
 use App\Models\Simply;
 use App\Models\Plugin;
+use App\Models\AesPlugin;
 
 class ShowData extends CommandBase
 {
@@ -51,6 +52,9 @@ class ShowData extends CommandBase
             break;
         case 'plugin':
             $result = Plugin::all();
+            break;
+        case 'aes':
+            $result = AesPlugin::all();
             break;
         default:
             return [];

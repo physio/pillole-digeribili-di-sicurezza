@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Plugin;
 use App\Models\Simply;
 use App\Models\Advanced;
+use App\Models\AesPlugin;
 
 class GenerateDocument extends CommandBase
 {
@@ -45,6 +46,10 @@ class GenerateDocument extends CommandBase
         return Plugin::create($data);
     }
 
+    protected function storeAesPlugin($data) {
+        return AesPlugin::create($data);
+    }
+
     /**
      * Execute the console command.
      *
@@ -72,7 +77,10 @@ class GenerateDocument extends CommandBase
                 break;
             case 'plugin':
                 $result = $this->storePlugin($data);
-                break;                            
+                break;    
+            case 'aes':
+                $result = $this->storeAesPlugin($data);
+                break;                          
             default:
                 $return = false;
                 break;

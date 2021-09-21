@@ -23,7 +23,7 @@ class Advanced extends Model
      */
     public function setDocumentNumberAttribute($value)
     {
-        $appEncryptionKey = config('app.encryption_key');
+        $appEncryptionKey = config('app.cipher');
         $encrypter = new Encrypter($appEncryptionKey);
         $this->attributes['documentNumber'] = Model::encryptUsing($encrypter);
     }
