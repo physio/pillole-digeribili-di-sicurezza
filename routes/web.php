@@ -21,8 +21,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/card', App\Http\Controllers\IdentityCardController::class)->middleware(['auth']);
 
-Route::resource('/identity-card', App\Http\Controllers\IdentityCardController::class)->middleware(['auth']);
+Route::resource('/identity-card', App\Http\Controllers\IdentityCardController::class)->middleware(['auth'])->name('*', 'identity-card');
 
 require __DIR__.'/auth.php';
