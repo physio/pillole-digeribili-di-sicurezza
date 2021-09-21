@@ -32,6 +32,8 @@ class SecurityScan extends Command
         $result = $checker->check(base_path('composer.lock'));
 
         if (!count($result)) {
+            $this->info('No vulnerabilities found');
+
             return 0;
         }
 
