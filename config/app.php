@@ -8,7 +8,7 @@ return [
         '_ENV' => array_diff(array_keys($_ENV), array()),
     ],
 
-    'encryption_key' => env('ENCRYPTION_KEY',),
+    'cipher' => env('ENCRYPTION_KEY',),
 
     /*
     |--------------------------------------------------------------------------
