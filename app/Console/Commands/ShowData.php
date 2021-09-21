@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Advanced;
 use App\Models\Simply;
 use App\Models\Plugin;
 use App\Models\AesPlugin;
@@ -46,9 +45,6 @@ class ShowData extends CommandBase
         switch ($type) {
         case 'simply':
             $result = Simply::all();
-            break;
-        case 'advanced':
-            $result = Advanced::all();
             break;
         case 'plugin':
             $result = Plugin::all();

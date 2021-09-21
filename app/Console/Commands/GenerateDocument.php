@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Plugin;
 use App\Models\Simply;
-use App\Models\Advanced;
 use App\Models\AesPlugin;
 
 class GenerateDocument extends CommandBase
@@ -38,10 +37,6 @@ class GenerateDocument extends CommandBase
         return Simply::create($data);
     }
 
-    protected function storeAdvanced($data) {
-        return Advanced::create($data);
-    }
-
     protected function storePlugin($data) {
         return Plugin::create($data);
     }
@@ -71,9 +66,6 @@ class GenerateDocument extends CommandBase
         switch ($method) {
             case 'simply':
                 $result = $this->storeSimply($data);
-                break;
-            case 'advanced':
-                $result = $this->storeAdvanced($data);
                 break;
             case 'plugin':
                 $result = $this->storePlugin($data);
