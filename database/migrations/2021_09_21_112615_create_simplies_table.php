@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIdentityCardsTable extends Migration
+class CreateSimpliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateIdentityCardsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('identity_cards');
-        Schema::create('identity_cards', function (Blueprint $table) {
+        Schema::create('simplies', function (Blueprint $table) {
             $table->id();
             $table->string('documentType', 100);
-            $table->encrypted('documentNumber');
+            $table->string('documentNumber', 200);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateIdentityCardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identity_cards');
+        Schema::dropIfExists('simplies');
     }
 }
