@@ -22,13 +22,13 @@ class Guardian {
         $threshold = 0;
 
         if ($this->data->logged()) {
-            $this->actions('success');
+            $this->actions->action('success');
         }
 
         foreach(config('pills.stages') as $class => $weight) {
             $stage = resolve($class);
 
-            if ($stage->run($thia->data)) {
+            if ($stage->run($this->data)) {
                 $threshold += $weight;
             }
         }

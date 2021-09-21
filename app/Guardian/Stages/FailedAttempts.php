@@ -5,11 +5,11 @@ namespace App\Guardian\Stages;
 use Carbon\Carbon;
 use App\Models\Action;
 use App\Guardian\Contracts\Stage;
-use App\Guardian\Data;
+use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
 
 class FailedAttempts implements Stage {
-    public const env('GUARDIAN_LOGIN_ATTEMPT', 5);
+
 
     private $actions;
 
@@ -18,8 +18,7 @@ class FailedAttempts implements Stage {
         $this->actions = $actions;
     }
 
-    public function run(Data $data): bool
-    {
+    public function run(LoginData $data): bool {
         if ($data->logged()) {
             return false;
         }
@@ -28,6 +27,6 @@ class FailedAttempts implements Stage {
        
         return $this->action(FailedAttempts::class)
             ->whereDate('created_at', Carbon::today())            
-            ->count() > FailedAttempts::ATTEMPTS;
+            ->count() > env('GUARDIAN_LOGIN_ATTEMPT', 5);
     }
 }

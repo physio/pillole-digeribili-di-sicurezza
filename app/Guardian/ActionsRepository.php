@@ -16,7 +16,7 @@ class ActionsRepository {
     public function create(string $action, string $data = null): Action
     {
         return Action::create([
-            'fingerprint' => $this->data->fingerpint(),
+            'fingerprint' => $this->data->fingerprint(),
             'action' => 'success',
             'data' => $data ?? $this->data->ip()
         ]);
@@ -24,7 +24,7 @@ class ActionsRepository {
 
     public function action(string $action)
     {
-        return Action::where('fingerprint', $data->fingerpint())
+        return Action::where('fingerprint', $this->data->fingerprint())
             ->where('action', $action);
     }
 

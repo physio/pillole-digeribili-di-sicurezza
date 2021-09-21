@@ -3,7 +3,7 @@
 namespace App\Guardian;
 
 use Auth;
-use Illuminate\Http\Request;
+use Request;
 
 class LoginData {    
     public function ip(): string
@@ -13,7 +13,7 @@ class LoginData {
 
     public function fingerprint(): ?string
     {
-        return Request::get('fingerpint', null);
+        return Request::get('fingerprint', null);
     }
 
     public function all(): array
