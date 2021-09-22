@@ -9,14 +9,20 @@ use App\Models\Aes;
 
 class GenerateDocument extends CommandBase
 {
+    private $providers = [
+        'simply' => Simply::class,
+        'rsa' => Rsa::class,
+        'aes' => Aes::class
+    ];
+
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'laravelday:store 
-                        {method : metodo di salvataggio. Le opzioni disponibili sono simply, rsa e aes } 
-                        {type : tipologia di documento da salvare } 
+    protected $signature = 'laravelday:store
+                        {method : metodo di salvataggio. Le opzioni disponibili sono simply, rsa e aes }
+                        {type : tipologia di documento da salvare }
                         {number : dato sensibile da salvare criptato }';
 
     /**
@@ -36,18 +42,6 @@ class GenerateDocument extends CommandBase
         parent::__construct();
     }
 
-    protected function storeSimply($data) {
-        return Simply::create($data);
-    }
-
-    protected function storeRsa($data) {
-        return Rsa::create($data);
-    }
-
-    protected function storeAes($data) {
-        return Aes::create($data);
-    }
-
     /**
      * Execute the console command.
      *
@@ -61,27 +55,21 @@ class GenerateDocument extends CommandBase
 
         $this->startTask("Create sensible data {$type}");
 
-        $data = [
-            'documentType' => $type,
-            'documentNumber' => $number,
-        ];
+        $provider = $this->providers[$method];
 
-        switch ($method) {
-            case 'simply':
-                $result = $this->storeSimply($data);
-                break;
-            case 'rsa':
-                $result = $this->storeRsa($data);
-                break;    
-            case 'aes':
-                $result = $this->storeAes($data);
-                break;                          
-            default:
-                $return = false;
-                break;
+        if (!$provider) {
+            return $this->errorTask('Invalid method selected');
         }
 
-        if ($result) return $this->completeTask();
-            else return $this->errorTask($return);
+        $result = $provider::create([
+            'documentType' => $type,
+            'documentNumber' => $number,
+        ]);
+
+        if ($result) {
+            return $this->completeTask();
+        }
+
+        return $this->errorTask();
     }
 }
