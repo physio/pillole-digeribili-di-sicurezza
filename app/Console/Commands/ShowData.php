@@ -9,6 +9,12 @@ use App\Models\Aes;
 
 class ShowData extends CommandBase
 {
+    private $providers = [
+        'simply' => Simply::class,
+        'rsa' => Rsa::class,
+        'aes' => Aes::class
+    ];
+
     /**
      * The name and signature of the console command.
      *
@@ -21,7 +27,7 @@ class ShowData extends CommandBase
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Show data encrypted and decrypted saved into DB';
 
     /**
      * Create a new command instance.
@@ -40,31 +46,33 @@ class ShowData extends CommandBase
      */
     public function handle()
     {
-        $type = $this->argument('type');
+        $method = $this->argument('type');
+        $error = false;
 
-        switch ($type) {
-        case 'simply':
-            $result = Simply::all();
-            break;
-        case 'rsa':
-            $result = Rsa::all();
-            break;
-        case 'aes':
-            $result = Aes::all();
-            break;
-        default:
-            return [];
+        if (!array_key_exists($method, $this->providers)) {
+            $error = true;
+            return $this->errorTask('Invalid method selected');
         }
-        $c = array();
+
+        $provider = resolve($this->providers[$method]);
+
+        $result = $provider::all();
+
+        $table = array();
         foreach ($result as $row) {
-            $c[] = [
+            $table[] = [
                 'ID' => $row-> id,
                 'Type' => $row->documentType,
                 'Decrypt' => $row->documentNumber,
                 'Encrypt' => $row->getRaw()
             ];
         }
-        $this->table(["ID", "Type", "Decrypt", "Encrypt"], $c );
-        return 0;
+        $this->table(["ID", "Type", "Decrypt", "Encrypt"], $table );
+
+        if (!$error) {
+            return $this->completeTask();
+        }
+
+        return $this->errorTask();
     }
 }
