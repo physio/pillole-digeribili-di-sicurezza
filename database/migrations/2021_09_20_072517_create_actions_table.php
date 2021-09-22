@@ -21,12 +21,12 @@ class CreateActionsTable extends Migration
             $table->string('fingerprint')->index();
             $table->string('action', 100);
             $table->string('data')->nullable();
-            $table->timestamps();            
+            $table->timestamps();
         });
 
-        Schema::table('actions', function (Blueprint $table) {
+        /* Schema::table('actions', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
-        });
+        }); */
     }
 
     /**
