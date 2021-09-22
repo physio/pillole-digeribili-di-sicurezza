@@ -14,14 +14,6 @@ Saved entities are:
 - **User** a user able to login to the system.
 
 
-#### IdentityCard Attributes <a id="id"></a>
-
-| Name           | Type    | Notes            | Example             |
-| -------------- | ------- | ---------------- | ------------------- |
-| id             | number  | Incremental      | 1234                |
-| documentType   | string  |                  | patente             |
-| documentNumber | encrypt |                  | xxxxxxxxxxxx        |
-
 
 #### Action Attributes <a id="id"></a>
 
@@ -31,3 +23,29 @@ Saved entities are:
 | user_id        | number  |                  | xxxxxxxxxxxx        |
 | fingerprint    | string  |                  | xxxxxxxxxxxx        |
 | action         | string  |                  |         |
+
+
+#### IdentityCard Simplies <a id="id"></a>
+| Name           | Type    | Notes            | Example             |
+| -------------- | ------- | ---------------- | ------------------- |
+| id             | number  | Incremental      | 1234                |
+| documentType   | string  |                  | patente             |
+| documentNumber | string  |                  | eyJpdiI6Im85dU1oand |
+
+
+
+#### Rsas <a id="id"></a>
+| Name           | Type    | Notes            | Example             |
+| -------------- | ------- | ---------------- | ------------------- |
+| id             | number  | Incremental      | 1234                |
+| documentType   | string  |                  | patente             |
+| documentNumber | encrypt | Encrypted        | 0s��[?�~q���D�x���f |
+
+
+
+#### Aess <a id="id"></a>
+| Name           | Type    | Notes            | Example             |
+| -------------- | ------- | ---------------- | ------------------- |
+| id             | number  | Incremental      | 1234                |
+| documentType   | string  |                  | patente             |
+| documentNumber | string  |                  | eyJpdiI6Im85dU1oand |

@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Advanced;
 use App\Models\Simply;
-use App\Models\Plugin;
+use App\Models\Rsa;
+use App\Models\Aes;
 
 class ShowData extends CommandBase
 {
@@ -46,11 +46,11 @@ class ShowData extends CommandBase
         case 'simply':
             $result = Simply::all();
             break;
-        case 'advanced':
-            $result = Advanced::all();
+        case 'rsa':
+            $result = Rsa::all();
             break;
-        case 'plugin':
-            $result = Plugin::all();
+        case 'aes':
+            $result = Aes::all();
             break;
         default:
             return [];
@@ -61,7 +61,7 @@ class ShowData extends CommandBase
                 'ID' => $row-> id,
                 'Type' => $row->documentType,
                 'Decrypt' => $row->documentNumber,
-                'Encrypt' => $row->getNumberRaw()
+                'Encrypt' => $row->getRaw()
             ];
         }
         $this->table(["ID", "Type", "Decrypt", "Encrypt"], $c );

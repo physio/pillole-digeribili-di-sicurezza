@@ -5,7 +5,7 @@ namespace App\Guardian\Stages;
 use Carbon\Carbon;
 use App\Models\Action;
 use App\Guardian\Contracts\Stage;
-use App\Guardian\Data;
+use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
 
 class DifferentFingerprint implements Stage {
@@ -16,20 +16,20 @@ class DifferentFingerprint implements Stage {
         $this->actions = $actions;
     }
 
-    public function run(Data $data): bool
+    public function run(LoginData $data): bool
     {
         if (!$data->logged()) {
             return false;
         }
         
-        $logins = $this->action('success')
+        $logins = $this->actions->action('success')
             ->orderBy('created_at', 'desc')
             ->take(2);
 
-        if (count($logins) < 2) {
+        if (count(array($logins)) < 2) {
             return false;
         }        
         
-        return $logins[0]->fingerptint != $logins[1]->fingerptint;
+        return $logins[0]->fingerprint != $logins[1]->fingerprint;
     }
 }

@@ -15,6 +15,8 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
+            <input type="hidden" name="fingerprint" value="" id="fingerprint">
+
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('Email')" />

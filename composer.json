@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "neelkanthk/laravel-surveillance": "^1.3",
+        "richardstyles/eloquent-aes": "^1.0",
         "richardstyles/eloquentencryption": "^3.0",
         "vinkla/hashids": "^9.1"
     },

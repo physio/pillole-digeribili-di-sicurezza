@@ -50,8 +50,8 @@ class Simply extends Model
      * @param  string  $value
      * @return string
      */
-    public function getNumberRaw()
+    public function getRaw()
     {
-        return $this->documentNumber;
+        return substr($this->attributes['documentNumber'],0,50);
     }    
 }

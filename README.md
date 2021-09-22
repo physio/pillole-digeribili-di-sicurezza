@@ -24,7 +24,7 @@ Le informazioni riguardanti i modelli e il DB si trovano alla [pagina dedicata](
 - [graham-campbell/throttle](https://github.com/GrahamCampbell/Laravel-Throttle): Utilizzato per evitare di sovraccaricare le richieste. Utilizzato soprattuto nella API.
 - [laravel-surveillance](https://github.com/neelkanthk/laravel-surveillance): Utilizzato per mettere sotto sorveglianza utenti malintenzionati, indirizzi IP e impronte digitali del browser anonime, scrivere registri di sorveglianza e impedire a quelli malintenzionati di accedere all'app.
 - [enlightn/security-checker](https://github.com/enlightn/security-checker): Utilizzato per il controllo di presenza package con falle di sicurezza.
-
+- [RichardStyles/eloquent-aes](https://github.com/RichardStyles/eloquent-aes): Altro componente che permette di criptare i dati a db con metodo AES.    
 
 ### Utilizzo dei comandi da CLI
 
