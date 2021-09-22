@@ -25,7 +25,7 @@ class ActionsRepository {
         return Action::create([
             'user_id' => $userId,
             'fingerprint' => $this->data->fingerprint(),
-            'action' => 'success',
+            'action' => $action,
             'data' => $data ?? $this->data->ip()
         ]);
     }
