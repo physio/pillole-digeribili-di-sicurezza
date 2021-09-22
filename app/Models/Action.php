@@ -9,11 +9,10 @@ class Action extends Model
 {
     use HasFactory;
 
-    
-    protected $fillable = [
-        'fingerprint', 'action', 'data'
-    ];
 
+    protected $fillable = [
+        'user_id', 'fingerprint', 'action', 'data'
+    ];
 
     /**
      * Get the user for the action.
