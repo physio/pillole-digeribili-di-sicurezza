@@ -8,6 +8,7 @@ use App\Guardian\Contracts\Stage;
 use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
 use App\Guardian\Providers\IpLookup;
+use Illuminate\Support\Facades\Log;
 
 class IpThreat implements Stage {
     private $actions;
@@ -30,6 +31,8 @@ class IpThreat implements Stage {
         $payload = (object) $this->ip->lookup($data->ip());
 
         if (!$payload->success) {
+            Log::warning('Error connecting to security api (key is not present?)');
+
             return false;
         }
 
