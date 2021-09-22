@@ -15,7 +15,7 @@ class SecurityScan extends Command
      *
      * @var string
      */
-    protected $signature = 'vulnerabilities';
+    protected $signature = 'laravelday:vulnerabilities';
 
     /**
      * The console command description.
