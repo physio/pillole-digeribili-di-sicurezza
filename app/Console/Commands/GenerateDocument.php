@@ -55,11 +55,11 @@ class GenerateDocument extends CommandBase
 
         $this->startTask("Create sensible data {$type}");
 
-        $provider = $this->providers[$method];
-
-        if (!$provider) {
+        if (!array_key_exists($method, $this->providers)) {
             return $this->errorTask('Invalid method selected');
         }
+
+        $provider = resolve($this->providers[$method]);
 
         $result = $provider::create([
             'documentType' => $type,
