@@ -9,7 +9,8 @@ use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
 use App\Guardian\Providers\IpLookup;
 
-class AsnLookup implements Stage {
+class AsnLookup implements Stage
+{
     private $actions;
 
     private $ip;

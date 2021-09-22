@@ -5,8 +5,9 @@ namespace App\Guardian\Stages;
 use Carbon\Carbon;
 use App\Models\Action;
 use App\Guardian\Contracts\Stage;
-use App\Guardian\Data;
+use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
+use App\Guardian\Providers\IpLookup;
 
 class IpThreat implements Stage {
     private $actions;
@@ -20,14 +21,14 @@ class IpThreat implements Stage {
         $this->ip = $ip;
     }
 
-    public function run(Data $data): bool
+    public function run(LoginData $data): bool
     {
         if ($data->logged()) {
             return false;
         }
 
         $payload = (object) $this->ip->lookup($data->ip());
-       
+
         return $payload->is_proxy || $payload->is_tor || $payload->threat_level == 'high';
     }
 }
