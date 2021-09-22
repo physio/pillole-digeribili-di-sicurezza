@@ -2,7 +2,7 @@
 
 namespace App\Guardian\Providers;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class IpLookup {
