@@ -2,10 +2,10 @@
 
 namespace App\Guardian;
 
-use Auth;
-use Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
-class LoginData {    
+class LoginData {
     public function ip(): string
     {
         return Request::ip();

@@ -2,10 +2,11 @@
 
 namespace App\Guardian;
 
+use Illuminate\Support\Facades\Auth;
 use App\Guardian\LoginData;
 use App\Models\Action;
 
-class ActionsRepository {    
+class ActionsRepository {
     private $data;
 
     function __construct(LoginData $data)
@@ -15,7 +16,14 @@ class ActionsRepository {
 
     public function create(string $action, string $data = null): Action
     {
+        $userId = 0;
+
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+        }
+
         return Action::create([
+            'user_id' => $userId,
             'fingerprint' => $this->data->fingerprint(),
             'action' => 'success',
             'data' => $data ?? $this->data->ip()
@@ -37,7 +45,7 @@ class ActionsRepository {
         if (count($logins) < 2) {
             return null;
         }
-            
+
         return [ $logins[0], $logins[1] ];
     }
 }
