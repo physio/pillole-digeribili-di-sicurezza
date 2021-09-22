@@ -15,7 +15,7 @@ class SecurityScan extends Command
      *
      * @var string
      */
-    protected $signature = 'laravelday:vulnerabilities';
+    protected $signature = 'laravelday:scan';
 
     /**
      * The console command description.
@@ -30,6 +30,7 @@ class SecurityScan extends Command
         $checker = new SecurityChecker;
 
         $result = $checker->check(base_path('composer.lock'));
+        //$result = $checker->check(base_path('composer-fake.lock'));
 
         if (!count($result)) {
             $this->info('No vulnerabilities found');
