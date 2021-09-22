@@ -30,6 +30,10 @@ class AsnLookup implements Stage
 
         $payload = (object) $this->ip->lookup($data->ip());
 
+        if (!$payload->success) {
+            return false;
+        }
+
         $this->actions->create(AsnLookup::class, $payload->connection->asn);
 
         $logins = $this->actions->action(AsnLookup::class)

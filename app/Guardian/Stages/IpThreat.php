@@ -29,6 +29,10 @@ class IpThreat implements Stage {
 
         $payload = (object) $this->ip->lookup($data->ip());
 
+        if (!$payload->success) {
+            return false;
+        }
+
         return $payload->is_proxy || $payload->is_tor || $payload->threat_level == 'high';
     }
 }
