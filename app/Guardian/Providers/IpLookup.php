@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class IpLookup {
-
-    private function lookup(string $ip): array
+    public function lookup(string $ip): array
     {
         if (Cache::has($ip)) {
             return json_decode(Cache::get($ip), true);
