@@ -18,10 +18,6 @@ class DifferentFingerprint implements Stage {
 
     public function run(LoginData $data): bool
     {
-        if (!$data->logged()) {
-            return false;
-        }
-
         $logins = $this->actions->action('success')
             ->orderBy('created_at', 'desc')
             ->take(2);
