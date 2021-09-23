@@ -17,7 +17,7 @@ class Guardian {
         $this->actions = $actions;
     }
 
-    public function run(): void
+    public function run(bool $throttled): void
     {
         $threshold = 0;
 
@@ -36,10 +36,11 @@ class Guardian {
         if ($threshold > config('pills.threshold')) {
             // Notification & Action
         }
-    }
 
-    public function throttled(): void
-    {
-        $this->actions->action('throttled');
+        if ($throttled) {
+            $this->actions->action('throttled');
+
+            abort(429, 'TOO MANY ATTEMPTS');
+        }
     }
 }

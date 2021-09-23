@@ -20,13 +20,9 @@ class AuthLoginEventHandler
 
     public function login()
     {
-        $this->guardian->run();
+        $throttled = $this->hammering->hint();
 
-        if ($this->hammering->throttled()) {
-            $this->guardian->throttled();
-
-            abort(429, 'TOO MANY ATTEMPTS');
-        }
+        $this->guardian->run($throttled);
     }
 
     public function attempt($credentials)
