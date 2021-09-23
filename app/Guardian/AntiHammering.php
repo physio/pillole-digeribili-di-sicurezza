@@ -9,7 +9,10 @@ class AntiHammering
 {
     public function hint(): bool
     {
-        Throttle::hit(Request::instance(), env('THROTTLE_COUNT'), env('THROTTLE_TIME_SPAN'));
+        $count = (getenv("THROTTLE_COUNT") !== false)? intval(env('THROTTLE_COUNT')) : 5;
+        $time = (getenv("THROTTLE_TIME_SPAN") !== false)? intval(env('THROTTLE_TIME_SPAN')) : 60;
+
+        Throttle::hit(Request::instance(), $count, $time);
 
         return $this->throttled();
     }
