@@ -27,7 +27,7 @@ class AuthLoginEventHandler
 
     public function attempt($credentials)
     {
-        $this->hammering->hint();
+        //
     }
 
     public function lockout($lockout)
