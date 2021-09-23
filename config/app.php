@@ -40,8 +40,6 @@ return [
         '_ENV' => array_diff(array_keys($_ENV), array()),
     ],
 
-    'cipher' => env('ENCRYPTION_KEY',),
-
     /*
     |--------------------------------------------------------------------------
     | Application Name

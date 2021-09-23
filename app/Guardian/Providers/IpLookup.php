@@ -14,7 +14,7 @@ class IpLookup {
 
         $key = env('IPAPI_KEY');
 
-        $payload = Http::get("https://api.ipapi.com/api/{$ip}?access_key={$key}")->json();
+        $payload = Http::get("http://api.ipapi.com/api/{$ip}?access_key={$key}")->json();
 
         Cache::put($ip, json_encode($payload));
 
