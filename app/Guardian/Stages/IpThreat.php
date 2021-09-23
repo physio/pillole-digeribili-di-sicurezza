@@ -24,10 +24,6 @@ class IpThreat implements Stage {
 
     public function run(LoginData $data): bool
     {
-        if ($data->logged()) {
-            return false;
-        }
-
         $payload = (object) $this->ip->lookup($data->ip());
 
         if (!$payload->success) {
