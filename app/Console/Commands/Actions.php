@@ -39,7 +39,9 @@ class Actions extends CommandBase
      */
     public function handle(Guardian $guardian)
     {
-        $this->table(["user_id", "fingerprint", "action", "data", "created_at", "edit_at"], Action::all());
+        $columns = [ "user_id", "fingerprint", "action", "data", "created_at" ];
+
+        $this->table($columns, Action::get($columns));
 
         return 0;
     }
