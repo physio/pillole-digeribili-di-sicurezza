@@ -19,8 +19,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'GrahamCampbell\Throttle\Http\Middleware\ThrottleMiddleware:5,30'])->name('dashboard');
-
+})->name('dashboard');
 
 
 

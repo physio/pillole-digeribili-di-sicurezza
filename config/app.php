@@ -2,6 +2,38 @@
 
 return [
 
+    // Per le vecchie versioni di laravel
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'REDIS_PASSWORD',
+            'MAIL_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+        ],
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'REDIS_PASSWORD',
+            'MAIL_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+        ],
+        '_POST' => [
+            'password',
+        ],
+    ],
+
+    // Se vogliamo nascondere tutte le variabili:
+    // 'debug_blacklist' => [
+    //    '_COOKIE' => array_keys($_COOKIE),
+    //    '_SERVER' => array_keys($_SERVER),
+    //    '_ENV' => array_keys($_ENV),        
+    // ],
+
+
+    // Se usiamo laravel dalla versione 7 invece:
     'debug_hide' => [
         '_COOKIE' => array_diff(array_keys($_COOKIE), array()),
         '_SERVER' => array_diff(array_keys($_SERVER), array('APP_URL', 'QUERY_STRING')),
