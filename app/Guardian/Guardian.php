@@ -5,7 +5,7 @@ namespace App\Guardian;
 use App\Guardian\LoginData;
 use App\Guardian\ActionsRepository;
 
-class Guardian {    
+class Guardian {
     private $data;
 
     private $actions;
@@ -36,5 +36,10 @@ class Guardian {
         if ($threshold > config('pills.threshold')) {
             // Notification & Action
         }
+    }
+
+    public function throttled(): void
+    {
+        $this->actions->action('throttled');
     }
 }
