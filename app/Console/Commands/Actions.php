@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Guardian\Guardian;
 use Illuminate\Console\Command;
 use App\Models\Action;
 
@@ -36,10 +37,10 @@ class Actions extends CommandBase
      *
      * @return int
      */
-    public function handle()
+    public function handle(Guardian $guardian)
     {
-        $result = Action::all();
-        $this->table(["user_id", "fingerprint", "action", "data", "created_at", "edit_at"], $result );
+        $this->table(["user_id", "fingerprint", "action", "data", "created_at", "edit_at"], Action::all());
+
         return 0;
     }
 }

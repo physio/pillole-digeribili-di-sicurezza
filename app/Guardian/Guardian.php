@@ -21,9 +21,7 @@ class Guardian {
     {
         $threshold = 0;
 
-        if ($this->data->logged()) {
-            $this->actions->action('success');
-        }
+        $this->actions->create($this->data->logged() ? 'success' : 'failded');
 
         foreach(config('pills.stages') as $class => $weight) {
             $stage = resolve($class);

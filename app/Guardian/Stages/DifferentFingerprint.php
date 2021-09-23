@@ -21,15 +21,17 @@ class DifferentFingerprint implements Stage {
         if (!$data->logged()) {
             return false;
         }
-        
+
         $logins = $this->actions->action('success')
             ->orderBy('created_at', 'desc')
             ->take(2);
 
         if (count(array($logins)) < 2) {
             return false;
-        }        
-        
+        }
+
+        $this->actions->create(DifferentFingerprint::class, 'Different ' . $logins[0]->fingerprint != $logins[1]->fingerprint);
+
         return $logins[0]->fingerprint != $logins[1]->fingerprint;
     }
 }

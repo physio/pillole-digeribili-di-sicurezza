@@ -23,10 +23,10 @@ class FailedAttempts implements Stage {
             return false;
         }
 
-        $this->actions->action(FailedAttempts::class);
-       
+        $this->actions->create(FailedAttempts::class);
+
         return $this->actions->action(FailedAttempts::class)
-            ->whereDate('created_at', Carbon::today())            
+            ->whereDate('created_at', Carbon::today())
             ->count() > env('GUARDIAN_LOGIN_ATTEMPT', 5);
     }
 }

@@ -36,6 +36,8 @@ class IpThreat implements Stage {
             return false;
         }
 
+        $this->actions->create(IpThreat::class, "proxy: {$payload->is_proxy}, tor: {$payload->is_tor}, level: {$payload->threat_level}" );
+
         return $payload->is_proxy || $payload->is_tor || $payload->threat_level == 'high';
     }
 }
