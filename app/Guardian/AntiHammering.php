@@ -19,6 +19,6 @@ class AntiHammering
 
     public function throttled(): bool
     {
-        return Throttle::check(Request::instance());
+        return !Throttle::check(Request::instance());
     }
 }
