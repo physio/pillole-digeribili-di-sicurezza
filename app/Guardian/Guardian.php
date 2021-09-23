@@ -35,7 +35,7 @@ class Guardian {
             // Notification & Action
         }
 
-        if ($throttled && !$data->logged()) {
+        if ($throttled && !$this->data->logged()) {
             $this->actions->action('throttled');
 
             abort(429, 'TOO MANY ATTEMPTS');
